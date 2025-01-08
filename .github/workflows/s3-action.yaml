@@ -9,7 +9,6 @@ on:
 env:
   BUCKET_NAME : "dlauck-cloud-resume-challenge"
   AWS_REGION : "us-east-2"
-  IAM_ROLE : "arn:aws:iam::637423200247:role/github-to-aws-OICD"
 
 # permission can be added at job level or workflow level
 permissions:
@@ -27,10 +26,5 @@ jobs:
         name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ env.IAM_ROLE }}
+          role-to-assume: arn:aws:iam::637423200247:role/github-to-aws-OICD
           aws-region: ${{ env.AWS_REGION }}
-      # Upload a file to AWS s3
-      # - 
-      #   name: Copy index.html to s3
-      #   run: |
-      #     aws s3 cp ./index.html s3://${{ env.BUCKET_NAME }}/
