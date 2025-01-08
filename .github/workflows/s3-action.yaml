@@ -28,3 +28,8 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::637423200247:role/github-to-aws-OICD
           aws-region: ${{ env.AWS_REGION }}
+      # Upload a file to AWS s3
+      - 
+        name: Copy master files into S3
+        run: |
+          aws s3 cp ./ s3://${{ env.BUCKET_NAME }}/ --recursive
